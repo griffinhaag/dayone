@@ -1,65 +1,40 @@
 # DayONE
 
-**Griffin Haag (Programmer)**
-**Lucas Kells (Cloud Deployer)**
-Dunwoody College of Technology  
-Capstone – Web Development and Database Engineering
+A help site for new Dunwoody College students. It collects short YouTube tutorials so students can fix common setup problems on their first day, sorted by platform (Windows, Mac, Linux) and topic.
 
+Capstone project for Web Development and Database Engineering at Dunwoody College of Technology.
+- **Griffin Haag**: programming
+- **Lucas Kells**: cloud deployment (AWS S3 static hosting)
 
+## Features
 
-# Elevator Pitch
+- Video library filtered by platform and category, with titles and thumbnails pulled from the YouTube Data API
+- Register and log in, with passwords hashed in the browser using SHA-256
+- Admin dashboard for adding videos by URL and managing platforms and categories
+- Fully static, so it runs from S3 or by opening `index.html`
 
-DayONE is a web platform designed to help new Dunwoody students get the technical help they need on day one. The system offers fast access to categorized YouTube Shorts, sorted by platform (Windows, Mac, Linux) and course (Web Dev, Cloud, Math). It features an intuitive UI, simulated login system, admin dashboard, and is hosted as a static site using AWS S3.
+Login is simulated on the client using `Members/users.json`, since the brief called for a static site. It's a demo, not real authentication.
 
+## Running it
 
+1. Copy `js/config.example.js` to `js/config.js` and add a YouTube Data API v3 key. `config.js` is gitignored so the key isn't committed.
+2. Open `index.html` in a browser, or serve the folder with any static server.
+3. Register an account. To try the admin tools, set that user's `"role"` to `"admin"` in `Members/users.json` and log in again.
 
-# Quick Start (Local Demo)
+## Layout
 
-1. Unzip the project folder.
-2. Open `index.html` in any modern web browser.
-3. Register a new user.
-4. To simulate an admin, open `Members/users.json` and change `"role": "user"` to `"role": "admin"` for any user.
-5. Refresh and log in again to access admin tools.
+```
+index.html            Video library
+css/                  Styles
+js/
+  script.js           Loads and filters videos
+  auth.js             Login/session helpers
+  userDatabase.js     Reads and writes the user list
+  admin.js            Admin dashboard logic
+  config.example.js   Template for the API key config
+credentials/          Login, register, user, and admin pages
+Members/users.json    Demo user store
+Videos/               Video list (youtube_videos.json)
+```
 
-**Browser Requirements:** Chrome, Edge, or Firefox with JavaScript enabled.  
-**No backend server required for this version.**
-
-
-# Directory Structure
-
-Haag_Griffin_Portfolio/
-├── README.md
-├── Executive_Summary.pdf
-├── Design_Documentation.pdf
-├── Deployment_Guide.pdf
-├── User_Guide.pdf
-├── Testing_Validation_Report.pdf
-├── Reflection_Lessons_Learned.pdf
-├── REFERENCES.md
-│
-├── Source_Code/
-│ ├── index.html
-│ ├── login.html
-│ ├── register.html
-│ ├── admin.html
-│ ├── dashboard.html
-│ ├── styles.css
-│ ├── script.js
-│ ├── admin.js
-│ ├── auth.js
-│ └── Members/
-│ ├── users.json
-│ └── videos.json
-│
-└── Presentation_Materials/
-└── DayONE.pdf
-
-
-# Git Tag and Commit
-
-Git Tag: `v1.0-final`  
-Commit Hash: `1aa4de99aa652b1d0bd884c3fac6ad2d9d20b6ad`
-
-# Licensing & Attribution
-
-All assets used are original or properly cited in the REFERENCES.md file.
+Sources and attributions are in [REFERENCES.md](REFERENCES.md).

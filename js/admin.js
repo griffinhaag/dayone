@@ -150,7 +150,7 @@ addVideoForm.addEventListener('submit', (e) => {
 videoUrl.addEventListener('change', async () => {
   const id = getYouTubeVideoId(videoUrl.value.trim());
   if (id) {
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=REDACTED_API_KEY`);
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${window.DAYONE_CONFIG.YOUTUBE_API_KEY}`);
     const data = await response.json();
     const snippet = data.items?.[0]?.snippet;
     if (snippet) {

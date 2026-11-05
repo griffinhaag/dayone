@@ -1,4 +1,4 @@
-const API_KEY = 'REDACTED_API_KEY';
+const API_KEY = window.DAYONE_CONFIG.YOUTUBE_API_KEY;
 
 const defaultVideos = [
   { id: 'JJx0Akfy4Ag', platform: 'windows', category: 'general', title: 'Windows Intro', description: '...' },
